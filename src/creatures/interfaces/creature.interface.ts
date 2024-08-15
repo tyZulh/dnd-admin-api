@@ -1,5 +1,10 @@
 import mongoose, { Document } from 'mongoose';
-import { IOption } from 'src/common/interface';
+import {
+  IActionOption,
+  IChoice,
+  IDamage,
+  IDifficultyClass,
+} from 'src/common/interface';
 
 interface IAction {
   readonly _id?: boolean;
@@ -15,55 +20,11 @@ interface IAction {
   readonly action_options: IChoice;
 }
 
-interface IActionOption {
-  readonly _id?: boolean;
-  readonly action_name: string;
-  readonly count: number | string;
-  readonly type: 'melee' | 'ranged' | 'ability' | 'magic';
-}
-
 interface IActionUsage {
   readonly _id?: boolean;
   readonly type: string;
   readonly dice?: string;
   readonly min_value?: number;
-}
-
-interface IChoice {
-  readonly _id?: boolean;
-  readonly desc?: string;
-  readonly choose: number;
-  readonly type: string;
-  readonly from: OptionSet;
-}
-
-interface IDamage {
-  readonly _id?: boolean;
-  readonly damage_type: IAPIReference;
-  readonly damage_dice: string;
-}
-
-type OptionSet =
-  | IOptionsArrayOptionSet
-  | IEquipmentCategoryOptionSet
-  | IResourceListOptionSet;
-
-interface IOptionsArrayOptionSet {
-  readonly _id?: boolean;
-  readonly option_set_type: 'options_array';
-  readonly options: IOption[];
-}
-
-interface IEquipmentCategoryOptionSet {
-  readonly _id?: boolean;
-  readonly option_set_type: 'equipment_category';
-  readonly equipment_category: IAPIReference;
-}
-
-interface IResourceListOptionSet {
-  readonly _id?: boolean;
-  readonly option_set_type: 'resource_list';
-  readonly resource_list_url: IAPIReference;
 }
 
 type IArmorClass =
@@ -170,14 +131,6 @@ interface ISpeed {
   readonly swim?: string;
   readonly walk?: string;
 }
-//   interface ISpell {
-//     readonly _id?: boolean;
-//     readonly name: string;
-//     readonly level: number;
-//     readonly url: string;
-//     readonly notes?: string;
-//     readonly usage?: ISpecialAbilityUsage;
-//   };
 
 interface ISpecialAbility {
   readonly _id?: boolean;
@@ -209,13 +162,6 @@ interface ISpecialAbilitySpell {
   readonly url: string;
   readonly notes?: string;
   readonly usage?: ISpecialAbilityUsage;
-}
-
-interface IDifficultyClass {
-  readonly _id?: boolean;
-  readonly dc_type: IAPIReference;
-  readonly dc_value?: number;
-  readonly success_type: 'none' | 'half' | 'other';
 }
 
 export interface ICreature extends Document {

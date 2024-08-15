@@ -42,14 +42,14 @@ interface IResourceListOptionSet {
   resource_list_url: string;
 }
 
-interface IDifficultyClass {
+export interface IDifficultyClass {
   _id?: boolean;
   dc_type: IAPIReference;
   dc_value?: number;
   success_type: 'none' | 'half' | 'other';
 }
 
-interface IDamage {
+export interface IDamage {
   _id?: boolean;
   damage_type: IAPIReference;
   damage_dice: string;
@@ -74,7 +74,7 @@ interface IReferenceOption {
   item: IAPIReference;
 }
 
-interface IActionOption {
+export interface IActionOption {
   _id?: boolean;
   option_type: 'action';
   action_name: string;
