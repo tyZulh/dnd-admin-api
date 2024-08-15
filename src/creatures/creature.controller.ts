@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { Creature } from './schemas/creature.schema';
+import { Creature } from './schemas/types';
 import { CreateCreatureDto } from './dtos/createCreature.dto';
 import { CreatureService } from './creature.service';
 

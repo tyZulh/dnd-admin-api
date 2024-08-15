@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 import {
   Action,
@@ -24,7 +24,7 @@ import {
   SpecialAbilitySpellcasting,
   SpecialAbility,
   Speed,
-  Creature,
+  Monster,
 } from './types';
 
 export const APIReferenceSchema = new Schema<APIReference>({
@@ -220,7 +220,7 @@ const SpeedSchema = new Schema<Speed>({
   walk: String,
 });
 
-const Creature = new Schema<Creature>({
+const Monster = new Schema<Monster>({
   _id: String,
   actions: [ActionSchema],
   alignment: String,
@@ -256,4 +256,4 @@ const Creature = new Schema<Creature>({
   xp: Number,
 });
 
-export default Creature;
+export default model('Monster', Monster, 'monsters');

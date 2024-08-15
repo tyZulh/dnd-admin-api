@@ -4,14 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CreatureController } from './creatures/creature.controller';
 import { CreatureService } from './creatures/creature.service';
-import { CreatureSchema } from './creatures/schemas/creature.schema';
+import Creature from './creatures/schemas/creature.schema';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://admin:password@localhost:27017/', {
       dbName: 'dnd-admin-back',
     }),
-    MongooseModule.forFeature([{ name: 'Creature', schema: CreatureSchema }]),
+    MongooseModule.forFeature([{ name: 'Creature', schema: Creature }]),
   ],
   controllers: [AppController, CreatureController],
   providers: [AppService, CreatureService],
