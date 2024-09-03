@@ -15,7 +15,16 @@ export class CreatureService {
     return createdCreature.save();
   }
 
-  async findAll(): Promise<ICreature[]> {
-    return this.creatureModel.find().exec();
+  async findAll(): Promise<{ count: number; result: ICreature[] }> {
+    const count = await this.creatureModel.count().exec();
+    const result = await this.creatureModel
+      .find()
+      .select({ name: 1, index: 1 })
+      .exec();
+    return { count, result };
+  }
+
+  async findOne(index: string): Promise<ICreature> {
+    return this.creatureModel.findOne({ index: index }).exec();
   }
 }

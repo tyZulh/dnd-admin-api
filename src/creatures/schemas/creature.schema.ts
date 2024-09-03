@@ -221,7 +221,6 @@ const SpeedSchema = new Schema<Speed>({
 });
 
 const Creature = new Schema<Creature>({
-  _id: String,
   actions: [ActionSchema],
   alignment: String,
   armor_class: [ArmorClassSchema],
